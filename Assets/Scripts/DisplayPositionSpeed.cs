@@ -8,10 +8,11 @@ public class DisplayPositionSpeed : MonoBehaviour
     public Transform player;
     public Text displayText;
 
+    private Rigidbody rb;
     // Start is called before the first frame update
     void Start()
     {
-
+        rb = player.GetComponent<Rigidbody>();
     }
 
     // Update is called once per frame
@@ -21,7 +22,7 @@ public class DisplayPositionSpeed : MonoBehaviour
         float y_position = player.position.y;
         float z_position = player.position.z;
 
-        float movespeed = 0;
+        float movespeed = rb.velocity.magnitude;
 
         displayText.text = x_position.ToString("0") + " x " + y_position.ToString("0") + " x " + z_position.ToString("0") + "\n" + movespeed.ToString("0");
     }
