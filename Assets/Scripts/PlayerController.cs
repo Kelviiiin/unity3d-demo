@@ -10,7 +10,8 @@ public class PlayerController : MonoBehaviour
     public LayerMask groundLayers;
 
     private Rigidbody rb;
-    private SphereCollider col;
+
+    private bool cubeIsGrounded;
 
     // Start is called before the first frame update
     void Start()
@@ -18,7 +19,6 @@ public class PlayerController : MonoBehaviour
         Debug.Log("Start Player Movement");
 
         rb = GetComponent<Rigidbody>();
-        col = GetComponent<SphereCollider>();
     }
 
     // Update is called once per frame
@@ -36,14 +36,18 @@ public class PlayerController : MonoBehaviour
             FindObjectOfType<GameManager>().GameOver();
         }
 
-        if (Input.GetButtonDown("Jump") && IsGrounded()) 
+        if (Input.GetButtonDown("Jump") && cubeIsGrounded) 
         {
             rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+            cubeIsGrounded = false;
         }
     }
 
-    private bool IsGrounded()
+    private void OnCollisionEnter(Collision collision)
     {
-        return Physics.CheckCapsule(col.bounds.center, new Vector3(col.bounds.center.x, col.bounds.min.y, col.bounds.center.z), col.radius * 9f, groundLayers);
+        if (collision.gameObject.tag == "Ground" || collision.gameObject.tag == "Obstacle")
+        {
+            cubeIsGrounded = true;
+        }
     }
 }
