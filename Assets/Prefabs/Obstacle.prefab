@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 6418430318209005383}
   - component: {fileID: 6418430318209005382}
   - component: {fileID: 6418430318209005381}
+  - component: {fileID: -1506651927343063920}
   m_Layer: 0
   m_Name: Obstacle
   m_TagString: Untagged
@@ -60,7 +61,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: c22777d6e868e4f2fb421913386b154e, type: 2}
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -310,3 +311,21 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 0}
+--- !u!114 &-1506651927343063920
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6418430318209005380}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a2f6fa2b944b6844cbae6ac0914c6bd6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startMaterial: {fileID: 2100000, guid: d7f0db76d43df3b43950739d1083b3dc, type: 2}
+  texture:
+  - {fileID: 2800000, guid: 85780b34ad64ae14a9f87bf468feb845, type: 3}
+  - {fileID: 2800000, guid: 7546920a1e89080459863410b8d9fec0, type: 3}
+  - {fileID: 2800000, guid: 5cd03bb0a5c19e24e89afa4394aacb59, type: 3}
+  resetDealay: 5
