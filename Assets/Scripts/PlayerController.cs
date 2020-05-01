@@ -7,8 +7,6 @@ public class PlayerController : MonoBehaviour
     public float moveSpeed = 10f;
     public float jumpForce = 5f;
 
-    public LayerMask groundLayers;
-
     private Rigidbody rb;
 
     private bool cubeIsGrounded;
@@ -16,8 +14,6 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Debug.Log("Start Player Movement");
-
         rb = GetComponent<Rigidbody>();
     }
 
@@ -31,7 +27,7 @@ public class PlayerController : MonoBehaviour
 
         rb.AddForce(movement * moveSpeed);
 
-        if (transform.position.y < 0f)
+        if (transform.position.y < 0f || transform.position.x < 0 || transform.position.x > 50 || transform.position.z < -50 || transform.position.z > 0)
         {
             FindObjectOfType<GameManager>().GameOver();
         }
@@ -45,7 +41,7 @@ public class PlayerController : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.tag == "Ground" || collision.gameObject.tag == "Obstacle")
+        if (collision.gameObject.CompareTag("Ground") || collision.gameObject.CompareTag("Obstacle"))
         {
             cubeIsGrounded = true;
         }

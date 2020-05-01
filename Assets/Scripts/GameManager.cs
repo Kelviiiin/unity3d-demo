@@ -7,6 +7,19 @@ public class GameManager : MonoBehaviour
 
     public float restartDelay = 2f;
 
+    public void Update()
+    {
+        CloseGame();
+    }
+
+    private void CloseGame()
+    {
+        if (Input.GetButtonDown("Cancel"))
+        {
+            Application.Quit();
+        }
+    }
+
     public void GameOver()
     {
         if (!gameHasEnded)
